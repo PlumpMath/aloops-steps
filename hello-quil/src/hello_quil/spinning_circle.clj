@@ -1,4 +1,4 @@
-(ns hello-quil.core
+(ns hello-quil.spinning-circle
   (:require [quil.core :as q]
             [quil.middleware :as m]))
 
@@ -32,7 +32,7 @@
       ; Draw the circle.
       (q/ellipse x y 100 100))))
 
-(q/defsketch hello-quil
+(q/defsketch spinning-circle
   :title "You spin my circle right round"
   :size [500 500]
   ; setup function called only once, during sketch initialization.
@@ -40,8 +40,17 @@
   ; update-state is called on each iteration before draw-state.
   :update update-state
   :draw draw-state
-  :features [:keep-on-top]
+  :features [:keep-on-top
+             ;:exit-on-close   ;; No usar :exit-on-close para desarrollo
+             ]
   ; This sketch uses functional-mode middleware.
   ; Check quil wiki for more info about middlewares and particularly
   ; fun-mode.
   :middleware [m/fun-mode])
+
+(defn -main [& args])
+
+;; Si evalúo usando Ctrl+Enter encima de -main, me abre una sola ventana
+;; Si evalúo usando Ctrl+Enter encima de defsketch, me abre dos ventanas
+;; Si evalúo usando Ctrl+Mayus+Enter en cualquier sitio me abre dos ventanas
+

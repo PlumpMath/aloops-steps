@@ -1,4 +1,4 @@
-(ns hello-quil.for-the-glory-of-art
+(ns hello-quil.many-circles
   (:require [quil.core :as q])
   (:gen-class :main true))
 
@@ -16,19 +16,16 @@
         y    (q/random (q/height))]     ;; Set the y coord randomly within the sketch
     (q/ellipse x y diam diam)))         ;; Draw a circle at x y with the correct diameter
 
-(defn -main [& args]
-  (q/sketch                             ;; Define a new sketch (no name because we are using sketch instead of defsketch)
-    :title "Oh so many grey circles"    ;; Set the title of the sketch
-    :settings #(q/smooth 2)             ;; Turn on anti-aliasing
-    :setup setup                        ;; Specify the setup fn
-    :draw draw                          ;; Specify the draw fn
-    :size [323 200]
-    :features [:exit-on-close]          ;; :exit-on-close is not set by default, meaning that when we close the window
-                                        ;; the JVM keeps running. That's good for development, because if we close the
-                                        ;; JVM we'll need to start a new repl every time we run the sketch.
-                                        ;; But before we run "lein uberjar" we should turn it on.
+(q/defsketch many-circles             ;; Define a new sketch (no name because we are using sketch instead of defsketch)
+  :title "Oh so many grey circles"    ;; Set the title of the sketch
+  :settings #(q/smooth 2)             ;; Turn on anti-aliasing
+  :setup setup                        ;; Specify the setup fn
+  :draw draw                          ;; Specify the draw fn
+  :size [323 200]
+  ;:features [:exit-on-close]
+             )
 
-    ))
+(defn -main [& args])
 
 ;; Java requires a public main method within a public class to serve as the entry point for the JVM.
 ;; Using :gen-class allows us to use for-the-glory-of-art/-main as the entry point.

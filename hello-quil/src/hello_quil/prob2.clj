@@ -29,3 +29,4 @@
 
 (defn -main [& args]  (run-sketch))
 
+(-main)
