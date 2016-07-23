@@ -12,9 +12,7 @@
   (OscMessage. path))
 
 (defn send-osc-message [message]
-  (do
-    (println "Sending message " message "to"  my-remote-location)
-    (.send my-oscP5 message my-remote-location)))
+    (.send my-oscP5 message my-remote-location))
 
 (defn init-oscP5 [papplet]
   (def my-oscP5 (OscP5. papplet in-port))

@@ -26,19 +26,14 @@
 (defn process-osc-event [message]
   (let [osc-event (event-to-keyword message)]
     (condp = osc-event
-      :clip (do
-              (println (read-clip-info message))
-              (println ":clip")
-              )
-      :info (println :info)
-      :play (println :play)
-      :volume (println :volume))
+      :clip (println ":clip")
+      :info (println ":info")
+      :play (println ":play")
+      :volume (println ":volume"))
       ))
 
 (defn async-request-info-for-all-clips []
-  (do
-    (println "Sending osc message to \"/live/name/clip\" " )
-    (o/send-osc-message (o/make-osc-message "/live/name/clip"))))
+    (o/send-osc-message (o/make-osc-message "/live/name/clip")))
 
 (defn init-oscP5-communication [papplet]
   (o/init-oscP5 papplet))
