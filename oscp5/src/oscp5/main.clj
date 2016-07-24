@@ -23,7 +23,7 @@
 (defn osc-event [] (println "*************osc-event******************"))
 
 (defsketch papplet
-             :title "beat"
+             :title "osc"
              :setup setup
              :draw draw
              :size [200 200]

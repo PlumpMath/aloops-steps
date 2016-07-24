@@ -17,7 +17,8 @@
      "/live/clip/loopend" :loopend
      "/live/volume" :volume
      "/live/solo" :solo
-     "/live/tempo" :tempo)))
+     "/live/tempo" :tempo
+     (do (println "OSC-EVENT NOT FILTERED" path)))))
 
 (defn read-clip-info [osc-message]
   (let [[track clip nombre] (.arguments osc-message)]
@@ -29,7 +30,9 @@
       :clip (println ":clip")
       :info (println ":info")
       :play (println ":play")
-      :volume (println ":volume"))
+      :volume (println ":volume")
+      (do (println "not mapped"))) ;; Important: If no default expression is provided and no clause matches, an
+                                   ;; IllegalArgumentException is thrown.
       ))
 
 (defn async-request-info-for-all-clips []
@@ -37,3 +40,28 @@
 
 (defn init-oscP5-communication [papplet]
   (o/init-oscP5 papplet))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
