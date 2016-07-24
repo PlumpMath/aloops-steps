@@ -1,10 +1,9 @@
 (ns oscp5.main
   (:import [oscP5 OscP5 OscMessage ]
            [netP5 NetAddress])
-  (:require ;[quil.core :as q]
+  (:require [quil.core :as q]
             ;[quil.applet :as qa]
             [oscp5.oscapi :as oscapi])
-  (:use quil.core)
   ;(:gen-class)
   )
 
@@ -14,15 +13,15 @@
 (defn setup []  )
 
 (defn draw []
-  (apply background [255 180 250])   )
+  (apply q/background [255 180 250]))
 
 (defn mouse-clicked [] (do
                          (println "mouse clicked")
                          (oscapi/async-request-info-for-all-clips)))
 
-(defn osc-event [] (println "*************osc-event******************"))
+(defn osc-event [message] (println message))
 
-(defsketch papplet
+(q/defsketch papplet
              :title "osc"
              :setup setup
              :draw draw

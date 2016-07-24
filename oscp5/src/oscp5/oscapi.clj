@@ -20,10 +20,6 @@
      "/live/tempo" :tempo
      (do (println "OSC-EVENT NOT FILTERED" path)))))
 
-(defn read-clip-info [osc-message]
-  (let [[track clip nombre] (.arguments osc-message)]
-    {:track track :clip clip :nombre nombre}))
-
 (defn process-osc-event [message]
   (let [osc-event (event-to-keyword message)]
     (condp = osc-event
@@ -31,9 +27,9 @@
       :info (println ":info")
       :play (println ":play")
       :volume (println ":volume")
-      (do (println "not mapped"))) ;; Important: If no default expression is provided and no clause matches, an
-                                   ;; IllegalArgumentException is thrown.
-      ))
+      (do (println "not mapped"))))) ;; Important: If no default expression is provided and no clause matches, an
+                                     ;; IllegalArgumentException is thrown.
+
 
 (defn async-request-info-for-all-clips []
     (o/send-osc-message (o/make-osc-message "/live/name/clip")))
