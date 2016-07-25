@@ -1,22 +1,20 @@
 (ns oscp5-send-receive.core
   (:import [oscP5 OscP5 OscMessage]
            [netP5 NetAddress])
-  (:require [quil.core :as q])
-  ;(:gen-class)
-  )
+  (:require [quil.core :as q]))
 
 (declare my-remote-location my-oscP5)
 
 (def in-port 12000)
 (def out-port 12000)
 
-(def bg-color [180 255 250])
+(def bg [25 25 25])
+(def bg-color (atom bg))
 
 (defn setup [])
 
 (defn draw []
-  ;(apply q/background [255 180 250])
-  (q/text "hola!" 20 20))
+  (apply q/background @bg-color))
 
 (defn make-osc-message [path]
   (OscMessage. path))
@@ -31,8 +29,8 @@
 
 (defn osc-event [message]
   (println "mensage recibido en la aplicación: " message)
-  (println (type (.addrPattern message)))
-  (q/text (.addrPattern message) 20 40))
+  (println (.addrPattern message))
+  (reset! bg-color (map #(* % (rand-int 10)) bg)))
 
 (q/defsketch papplet
              :title "osc"
@@ -50,6 +48,5 @@
   (def my-remote-location (NetAddress. "localhost" out-port)))
 
 (init-oscP5-communication papplet)
-
 
 (defn -main [& args] )
