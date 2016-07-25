@@ -19,7 +19,7 @@
                          (println "mouse clicked")
                          (oscapi/async-request-info-for-all-clips)))
 
-(defn osc-event [message] (println message))
+(defn osc-event [message] (println "mensage recibido en la aplicación: " message))
 
 (q/defsketch papplet
              :title "osc"
