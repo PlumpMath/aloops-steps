@@ -104,15 +104,21 @@ Que es también un objeto de la clase `oscP5.OscMessage`. ¿Qué implica entonce
 - Me he dado cuenta de que hay más diferencias en la forma de imprimir los objetos en la consola. He ampliado lo que imprime la función `(defn -oscEvent ...)` para obtener más información y compararla con la de la librería de Juan.
 
   Quería saber qué imprime `(:osc-event (.state this))`, que debería ser la función que hemos asociado a `:osc-event` en el defsketch y que se aplica a message. El resultado es:
-  ```
-  #object[quil.middlewares.bind_output$bind_output$iter__148__152$fn__153$fn__164  0x5b739890
-quil.middlewares.bind_output$bind_output$iter__148__152$fn__153$fn__164@5b739890]```
+
+```
+#object[quil.middlewares.bind_output$bind_output$iter__148__152$fn__153$fn__164  0x5b739890
+quil.middlewares.bind_output$bind_output$iter__148__152$fn__153$fn__164@5b739890]
+```
+
 Que me ha parecido muy raro, pero no sólo representa así esa función, sino todas. Por ejemplo, la asociada a `:mouse-clicked`es
+
 ```
 #object[quil.middlewares.bind_output$bind_output$iter__148__152$fn__153$fn__164 0x186a5fac
 quil.middlewares.bind_output$bind_output$iter__148__152$fn__153$fn__164@186a5fac]
 ```
+
 En el caso de la librería de Juan, al imprimir las funciones, lo hace con nombres reconocibles, por ejemplo, la función asociada a `:osc-event` es:
+
 ```
 #'dat00.antropoloops/process-osc-event
 ```
