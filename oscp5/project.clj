@@ -11,6 +11,4 @@
                                            ;; de una librería local situada en /lib
                  ]
   ;:resource-paths ["lib/oscP5.jar"]
-  :main oscp5.main
- ;:aot [oscp5.main]
-  )
+  :main oscp5.main)

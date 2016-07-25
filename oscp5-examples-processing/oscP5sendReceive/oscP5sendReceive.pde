@@ -26,9 +26,11 @@ void setup() {
   myRemoteLocation = new NetAddress("127.0.0.1",12000);
 }
 
+String path = "hola!";
 
 void draw() {
   background(0);  
+  text(path, 30, 30);
 }
 
 void mousePressed() {
@@ -48,4 +50,7 @@ void oscEvent(OscMessage theOscMessage) {
   print("### received an osc message.");
   print(" addrpattern: "+theOscMessage.addrPattern());
   println(" typetag: "+theOscMessage.typetag());
+  
+  path=theOscMessage.addrPattern();
+  
 }
