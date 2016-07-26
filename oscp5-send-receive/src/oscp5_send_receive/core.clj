@@ -20,7 +20,7 @@
   (OscMessage. path))
 
 (defn send-osc-message [message]
-    (.send my-oscP5 message my-remote-location))
+  (.send my-oscP5 message my-remote-location))
 
 (defn mouse-clicked []
   (-> (make-osc-message "/test")
@@ -41,7 +41,8 @@
              :osc-event osc-event
              :features [:keep-on-top
                         :exit-on-close
-                        :no-bind-output])
+                        :no-bind-output]
+             )
 
 (defn init-oscP5-communication [papplet]
   (def my-oscP5 (OscP5. papplet in-port))

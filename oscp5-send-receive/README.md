@@ -1,14 +1,5 @@
 # oscp5-send-receive
 
-A Clojure library designed to ... well, that part is up to you.
+An exercise to send and receive a message using [oscP5](http://www.sojamo.de/libraries/oscP5/) and [quil](https://github.com/quil/quil)
 
-## Usage
-
-FIXME
-
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+No functional mode. State is managed modifing an atom insede the draw function, or in this case, in the osc-event function.

@@ -31,3 +31,9 @@
 
 (defn -main [& args])
 
+(def bg [25 25 25])
+
+(defn alter-bg-color []
+  (map #(* % (rand-int 10)) bg))
+
+(alter-bg-color)
